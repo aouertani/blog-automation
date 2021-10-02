@@ -1,0 +1,8 @@
+---
+# defaults file for common
+
+cluster_id: cluster-1
+cluster_zone: us-central1
+gcp_project_id: blog-327615
+
+service_account_key_file: "{{ lookup('env', 'GOOGLE_APPLICATION_CREDENTIALS') }}"

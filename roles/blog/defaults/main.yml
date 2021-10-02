@@ -1,0 +1,17 @@
+---
+# defaults file for blog
+# Helm release name
+blog_release_name: "blog"
+
+# Helm repository name
+blog_repo_name: "blog"
+
+
+# Helm chart URL
+blog_repo_url: "git@github.com:aouertani/blog-helm-chart.git"
+
+# Kubernetes namespace where juice-shop resources should be installed
+blog_namespace: "default"
+
+# Path to clone juic-shop helm repository 
+blog_clone_repo: /tmp/blog_repo

@@ -1,0 +1,20 @@
+---
+# tasks file for blog
+- name: Git clone blog repo on HEAD
+  ansible.builtin.git:
+    repo: "{{ blog_repo_url }}"
+    dest: "{{ blog_clone_repo }}"
+
+- name: Deploy blog chart from local path
+  kubernetes.core.helm:
+    name: "{{ blog_release_name }}"
+    chart_ref: "{{ blog_clone_repo }}"
+    release_namespace:  "{{ blog_namespace }}"
+    create_namespace: true
+    wait: yes
+    # values:  "{{ lookup('template', 'templates/values.yaml') | from_yaml }}"
+
+- name: Clean up cloned repository
+  file:
+    path: "{{ blog_clone_repo }}"
+    state: absent

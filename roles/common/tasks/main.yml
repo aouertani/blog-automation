@@ -1,0 +1,35 @@
+---
+# tasks file for common
+- name: Include prerequisites
+  include_tasks: "tasks/prerequisites.yml"
+
+- name:  gcloud auth activate service accountt
+  shell:
+    set -o errexit
+    set -o pipefail
+    set -o nounset
+
+      gcloud auth activate-service-account --key-file={{ service_account_key_file }}
+
+    exit 0
+  run_once: True
+  changed_when: False
+  register: result
+  args:
+    executable: "/bin/bash"
+
+
+- name: Set current context
+  shell:
+    set -o errexit
+    set -o pipefail
+    set -o nounset
+
+      gcloud container clusters get-credentials {{ cluster_id }} --zone {{ cluster_zone }} --project {{ gcp_project_id }}
+      
+    exit 0
+  run_once: True
+  changed_when: False
+  register: result
+  args:
+    executable: "/bin/bash"

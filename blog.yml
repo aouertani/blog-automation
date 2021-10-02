@@ -1,0 +1,29 @@
+
+- hosts: localhost
+
+  roles:
+    - role: common
+      tags: role-common
+    - role: cert-manager
+      tags: role-cert-manager
+    - role: ingress-controller
+      tags: role-ingress-controller
+    - role: dns
+      tags: role-dns
+    - role: blog
+      tags: role-blog
+    - role: nfs
+      tags: role-nfs
+    - role: prometheus
+      tags: role-prometheus
+    - role: grafana
+      tags: role-grafana
+
+  # tasks:
+  #   - name: Juice Shop application URL
+  #     debug:
+  #       msg: "Juice Shop application URL: https://{{ juice_shop_dns }}"
+    
+  #   - name: Grafana application URL
+  #     debug:
+  #       msg: "Grafana application URL: https://{{ grafana_dns }}"

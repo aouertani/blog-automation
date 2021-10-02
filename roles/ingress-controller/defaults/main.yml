@@ -1,0 +1,35 @@
+---
+# defaults file for ingress-controller
+
+# Helm chart version
+#ingress_controller_chart_version: "v1.3.1"
+
+# Helm release name
+ingress_controller_release_name: "ingress-nginx"
+
+# Helm repository name
+ingress_controller_repo_name: "ingress-nginx"
+
+# Helm chart name
+ingress_controller_chart_name: "{{ ingress_controller_repo_name }}/{{ ingress_controller_release_name }}"
+
+# Helm chart URL
+ingress_controller_chart_url: "https://kubernetes.github.io/ingress-nginx"
+
+# Kubernetes namespace where cert-manager resources should be installed
+ingress_controller_namespace: "cert-manager"
+
+# The following table contains the configurable parameters of the cert-manager
+#ingress_controller_values:
+#  - key=value
+cert_manager_le_clusterissuer_options:
+  - name: letsencrypt-prod
+    email: blog@gmail.com
+    server: acme-v02
+    private_key_secret_ref_name: letsencrypt-prod-account-key
+    solvers_http01_ingress_class: "nginx"
+  - name: letsencrypt-staging
+    email: blog@gmail.com
+    server: acme-staging-v02
+    private_key_secret_ref_name: letsencrypt-staging-account-key
+    solvers_http01_ingress_class: "nginx"

@@ -1,0 +1,22 @@
+# prerequisites
+
+- name: Check if kubectl command is installed locally
+  shell: hash kubectl
+  run_once: True
+  changed_when: False
+  args:
+    executable: "/bin/bash"
+
+- name: Check if Helm command is installed locally
+  shell: hash helm
+  run_once: True
+  changed_when: False
+  args:
+    executable: "/bin/bash"
+
+- name: Check if gcloud command is installed locally
+  shell: hash gcloud
+  run_once: True
+  changed_when: False
+  args:
+    executable: "/bin/bash"
