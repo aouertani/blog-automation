@@ -165,10 +165,11 @@ ok: [localhost] => {
 }
 ```
 
-#Todos:
+# Todos:
 * Rebuild the image of the app to scrape data and export them to prometheus
 * Create dashboard in grafana using those data to monitor the app
 * expose grafana with to be accessible from outside the cluster
 * add a role to mange the DNS zone 
-* add a role to automate the install and expose mysql operator 
+* add a role to automate the install and expose mysql operator
+* Manage secrets in gcp secrets (vault)
 
