@@ -22,36 +22,20 @@ Each role is described with more details on its README.md file.
     │   ├── README.md
     │   ├── defaults
     │   │   └── main.yml
-    │   ├── files
-    │   ├── handlers
-    │   │   └── main.yml
     │   ├── meta
     │   │   └── main.yml
     │   ├── tasks
     │   │   └── main.yml
     │   ├── templates
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
     ├── cert-manager
     │   ├── README.md
     │   ├── defaults
     │   │   └── main.yml
-    │   ├── files
-    │   ├── handlers
-    │   │   └── main.yml
     │   ├── meta
     │   │   └── main.yml
     │   ├── tasks
     │   │   └── main.yml
     │   ├── templates
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
     ├── common
     │   ├── README.md
     │   ├── defaults
@@ -65,17 +49,10 @@ Each role is described with more details on its README.md file.
     │   │   ├── main.yml
     │   │   └── prerequisites.yml
     │   ├── templates
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
     ├── grafana
     │   ├── README.md
     │   ├── defaults
     │   │   └── main.yml
-    │   ├── files
-    │   │   └── demo-grafana-dashboard.json
     │   ├── handlers
     │   │   └── main.yml
     │   ├── meta
@@ -84,34 +61,19 @@ Each role is described with more details on its README.md file.
     │   │   └── main.yml
     │   ├── templates
     │   │   └── values.yaml
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
     ├── ingress-controller
     │   ├── README.md
     │   ├── defaults
     │   │   └── main.yml
     │   ├── files
-    │   ├── handlers
-    │   │   └── main.yml
     │   ├── meta
     │   │   └── main.yml
     │   ├── tasks
     │   │   └── main.yml
     │   ├── templates
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
     └── prometheus
         ├── README.md
         ├── defaults
-        │   └── main.yml
-        ├── files
-        ├── handlers
         │   └── main.yml
         ├── meta
         │   └── main.yml
@@ -121,9 +83,6 @@ Each role is described with more details on its README.md file.
         │   ├── promethues-nfs-pv.yaml
         │   ├── promethues-nfs-pvc.yaml
         │   └── values.yaml
-        ├── tests
-        │   ├── inventory
-        │   └── test.yml
         └── vars
             └── main.yml
 ```
