@@ -1,4 +1,4 @@
-Role Name: juice-shop
+Role Name: blog
 =========
 
 This role juice shop application in juice-shop namepace.
@@ -11,7 +11,6 @@ This role needs the following roles to be run first:
 * cert-manager
 * ingress-controller
 * prometheus
-* dns
 
 Role Variables
 --------------
@@ -19,14 +18,14 @@ Role Variables
 ```yaml
 ---
 # Helm release name
-juice_shop_release_name: "juice-shop"
+juice_shop_release_name: "blog"
 
 # Helm repository name
-juice_shop_repo_name: "juice-shop"
+juice_shop_repo_name: "blog"
 
 
 # Helm chart URL
-juice_shop_repo_url: "https://github.com/aouertani/juice-shop-dep.git"
+juice_shop_repo_url: "https://github.com/aouertani/blog/tree/docker"
 
 # Kubernetes namespace where juice-shop resources should be installed
 juice_shop_namespace: "juice-shop"
@@ -54,5 +53,5 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - role: juice-shop
-      tags: role-juice-shop
+         - role: blog
+      tags: role-blog
