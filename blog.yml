@@ -8,12 +8,8 @@
       tags: role-cert-manager
     - role: ingress-controller
       tags: role-ingress-controller
-    - role: dns
-      tags: role-dns
     - role: blog
       tags: role-blog
-    - role: nfs
-      tags: role-nfs
     - role: prometheus
       tags: role-prometheus
     - role: grafana
