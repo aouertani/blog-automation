@@ -1,0 +1,45 @@
+---
+# defaults file for grafana
+
+# Helm chart version
+grafana_chart_version: "v1.3.1"
+
+# Helm release name
+grafana_release_name: "grafana"
+
+# Helm repository name
+grafana_repo_name: "grafana"
+
+# Helm chart name
+grafana_chart_name: "{{ grafana_repo_name }}/{{ grafana_release_name }}"
+
+# Helm chart URL
+grafana_chart_url: "https://grafana.github.io/helm-charts"
+
+# Kubernetes namespace where grafana resources should be installed
+grafana_namespace: "monitoring"
+
+# Grafana ingress params 
+letsencrypt: letsencrypt-staging
+grafana_host: grafana.blog.aouertani.com
+grafana_dns: grafana.blog.aouertani.com
+secret_name: garafana-cert
+service_name: grafana
+service_port: "80"
+
+# Prometheus data source details
+data_source_name: Prometheus
+data_source_type: prometheus
+data_source_url: http://prometheus-server 
+
+# Users credentials
+# Admin user
+admin_username: admin
+# Created user info
+user_name: "Bruce Wayne"
+user_email: batman@gotham.city
+user_login: batman
+user_password: changme
+
+
+

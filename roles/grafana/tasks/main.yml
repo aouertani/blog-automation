@@ -1,0 +1,79 @@
+---
+
+- name: Add grafana repo
+  kubernetes.core.helm_repository:
+    name:  "{{ grafana_repo_name }}"
+    repo_url:  "{{ grafana_chart_url }}"
+
+- name: Deploy grafana
+  community.kubernetes.helm:
+    name: "{{ grafana_release_name }}"
+    chart_ref: "{{ grafana_chart_name }}"
+    release_namespace: "{{ grafana_namespace }}"
+    #values: "{{ lookup('template', 'templates/values.yaml') | from_yaml }}"
+    wait: yes
+
+- name: Get grafana admin credentials
+  shell:
+    cmd: kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+  register: result
+  no_log: true
+
+# TODO create secrets or key to connect to grafana 
+- name: Handling grafana user creation
+  block:
+    - name: Create or update a grafana user
+      community.grafana.grafana_user:
+        url: "https://{{ grafana_host }}"
+        url_username: "{{ admin_username }}"
+        url_password: "{{ result.stdout }}"
+        name: "{{ user_name }}"
+        email: "{{ user_email }}"
+        login:  "{{ user_login }}"
+        password: "{{ user_password }}"
+        is_admin: true
+        state: present
+  rescue:
+    - name: Rescue grafana user creation
+      debug:
+        msg: Garafana user cannot be created.
+
+- name: Handling prometheus datasource creation
+  block:
+    - name: Create prometheus data source
+      community.grafana.grafana_datasource:
+        grafana_url: "https://{{ grafana_host }}"
+        grafana_user:  "{{ user_login }}"
+        grafana_password: "{{ user_password }}"
+        name: "{{ data_source_name }}"
+        ds_type: "{{ data_source_type }}"
+        ds_url: "{{ data_source_url }}"
+        access: proxy
+        use_proxy: no
+        tls_skip_verify: true
+        additional_json_data:
+          httpHeaderName1: "Authorization"
+        additional_secure_json_data:
+          httpHeaderValue1: "Bearer ihavenogroot"
+        enforce_secure_data: true
+  rescue:
+    - name: Rescue prometheus datasource creation
+      debug:
+        msg: Garafana cannot be created.
+
+# - name: Handling grafana dashboard creation
+#   block:
+#     - name: Import Grafana dashboard Juice Shop Instance Status
+#       community.grafana.grafana_dashboard:
+#         grafana_url: "https://{{ grafana_host }}"
+#         url_username: "{{ user_login }}"
+#         url_password: "{{ user_password }}"
+#         state: present
+#         commit_message: Updated by ansible
+#         overwrite: yes
+#         path: "{{ role_path }}/files/demo-grafana-dashboard.json"
+#         state: present
+#   rescue:
+#     - name: Rescue grafana dashboard creation
+#       debug:
+#         msg: Garafana dashboard already exists or cannot be created.

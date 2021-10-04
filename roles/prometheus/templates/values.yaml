@@ -1,0 +1,15 @@
+
+pushgateway:
+
+  replicaCount: 1
+
+  retention: "5d"
+
+  # persistentVolume:
+  #   type: pvc
+  #   enabled: true
+  #   size: 2Gi
+  #   accessModes:
+  #     - ReadWriteMany
+  #   existingClaim:
+  #     prometheus-nfs-pvc
