@@ -1,0 +1,4 @@
+*.retry
+*.log
+.DS_Store
+roles/blog/files/secret.env

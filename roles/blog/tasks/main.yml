@@ -5,6 +5,21 @@
     repo: "{{ blog_repo_url }}"
     dest: "{{ blog_clone_repo }}"
 
+- name: Create DB_PASSWORD secret
+  shell:
+    set -o errexit
+    set -o pipefail
+    set -o nounset
+
+      kubectl create secret generic blog-secrets --from-env-file="{{ path_to_secret_env }}"
+      
+    exit 0
+  run_once: False
+  changed_when: False
+  register: result
+  args:
+    executable: "/bin/bash"
+
 - name: Deploy blog chart from local path
   kubernetes.core.helm:
     name: "{{ blog_release_name }}"

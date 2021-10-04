@@ -15,3 +15,6 @@ blog_namespace: "default"
 
 # Path to clone juic-shop helm repository 
 blog_clone_repo: /tmp/blog_repo
+
+# Path to secret.env file
+path_to_secret_env: "{{ role_path }}/files/secret.env"
