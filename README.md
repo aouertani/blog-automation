@@ -92,6 +92,8 @@ Each role is described with more details on its README.md file.
 * A GCP project and a running GKE cluster 
 * GOOGLE_APPLICATION_CREDENTIALS should contain the path to a service account key file: [instructions here](https://cloud.google.com/docs/authentication/production#automatically)
 * A cloud DNS for the applicat example.com
+* Install MySQL operator: https://github.com/mysql/mysql-operator
+* Create a DB schema named laravel
 
 # Deploy blog in GKE
 To deploy the application and its ecosystem:
